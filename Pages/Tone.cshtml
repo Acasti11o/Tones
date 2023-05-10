@@ -1,0 +1,34 @@
+@page
+@model TonesModel
+@{
+    ViewData["Title"] = "Tone";
+}
+
+<h3>Artists</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Tone.ToneId"></label>
+                <select asp-for="Tone.ToneId" asp-items="Model.ArtistDropDown" class="form-control">
+                    <option value="">-- Select Artists --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" value="Filter" class="btn btn-primary" />
+                <input type="submit" value="Filter" />
+            </div>
+           <form>
+        </form>
+        </form>
+    </div>
+</div>
+<hr />
+@if (Model.Tone != null)
+{
+    <p>You Selected... @Model.Tone.FirstName @Model.Tone.LastName</p>
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
